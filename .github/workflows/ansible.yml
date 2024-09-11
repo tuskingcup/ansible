@@ -1,0 +1,25 @@
+name: CICD-pipeline to on-prem VM {main}
+ 
+env:
+  IMAGE_NAME: carbon-receipt-api-uat
+  CONTAINER_NAME: carbon-receipt-api-uat
+  DOCKERFILE_PATH: ./Dockerfile
+  CONTAINER_PORT: 80
+ 
+on:
+  push:
+    branches:
+      - main
+ 
+jobs:
+  build:
+    runs-on: ubuntu
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Checkout code
+        run: |
+            sudo apt-add-repository ppa:ansible/ansible -y
+            sudo apt update -y
+            sudo apt install ansible -y
+ 
